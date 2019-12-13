@@ -1,6 +1,7 @@
 # RecyclerView Touch Playground
 A sample app to play around with swipe and drag touch actions of RecyclerView
 
+<pre>
  __      __             __     .___         __________
 /  \    /  \___________|  | __ |   | ____   \______   \_______  ____   ___________   ____   ______ ______
 \   \/\/   /  _ \_  __ \  |/ / |   |/    \   |     ___/\_  __ \/  _ \ / ___\_  __ \_/ __ \ /  ___//  ___/
@@ -8,6 +9,7 @@ A sample app to play around with swipe and drag touch actions of RecyclerView
   \__/\  / \____/|__|  |__|_ \ |___|___|  /  |____|     |__|   \____/\___  /|__|    \___  >____  >____  >
        \/                   \/          \/                          /_____/             \/     \/     \/
 
+</pre>
 # RecyclerView Touch Playground
 
 A sample app to play around with swipe and drag touch actions of RecyclerView.
@@ -23,19 +25,22 @@ Just like Gmail gives an option to swipe a mail in the inbox to archive the item
 ![Left Right Full Swipe](art/left-right-swipe.gif)
 
 ### Left/Right partial swipe to show a menu
+<pre>
 \__    ___/___   \______ \   ____
   |    | /  _ \   |    |  \ /  _ \
   |    |(  <_> )  |    `   (  <_> )
   |____| \____/  /_______  /\____/
                          \/
-
+</pre>
 ### Drag Item to re order
+
+<pre>
 \__    ___/___   \______ \   ____
   |    | /  _ \   |    |  \ /  _ \
   |    |(  <_> )  |    `   (  <_> )
   |____| \____/  /_______  /\____/
                          \/
-
+</pre>
 
 
 
