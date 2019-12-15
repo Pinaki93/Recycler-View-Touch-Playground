@@ -1,15 +1,18 @@
 package dev.pinaki.recyclerviewswipe.ui.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import dev.pinaki.recyclerviewswipe.R
 import dev.pinaki.recyclerviewswipe.databinding.ItemViewBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 data class Item(
-    val item: String
+    val item: String,
+    var highlighted: Boolean = false
 )
 
 class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
@@ -54,6 +57,11 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
         notifyItemRangeChanged(position, items.size)
     }
 
+    fun moveItem(initialPosition: Int, finalPosition: Int) {
+        Collections.swap(items, initialPosition, finalPosition)
+        notifyItemMoved(initialPosition, finalPosition)
+    }
+
     inner class ItemViewHolder(
         private val binding: ItemViewBinding
     ) :
@@ -61,6 +69,11 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
         fun setItem(item: Item) {
             binding.tvItemName.text = item.item
+            itemView.setBackgroundColor(
+                if (item.highlighted) Color.parseColor("#ff0000") else Color.parseColor(
+                    "#ffffff"
+                )
+            )
         }
     }
 }
