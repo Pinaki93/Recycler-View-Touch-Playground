@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import dev.pinaki.recyclerviewswipe.R
 import dev.pinaki.recyclerviewswipe.databinding.ItemViewBinding
+import dev.pinaki.recyclerviewswipe.ui.adapter.diff.ItemDiffUtilCallback
 
 data class Item(
     val item: String
@@ -39,19 +41,28 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     }
 
     fun deleteItemAt(position: Int): Item {
-        val removedItem = items[position]
+        val oldList = items
 
-        items.removeAt(position)
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, items.size)
+        val newList = ArrayList<Item>()
+        newList.addAll(oldList)
+
+        val removedItem = newList[position]
+        newList.removeAt(position)
+
+        val diff = DiffUtil.calculateDiff(ItemDiffUtilCallback(oldList, newList))
+        diff.dispatchUpdatesTo(this)
 
         return removedItem
     }
 
     fun addItemAt(item: Item, position: Int) {
-        items.add(position, item)
-        notifyItemInserted(position)
-        notifyItemRangeChanged(position, items.size)
+        val oldList = items
+
+        val newList = ArrayList<Item>()
+        newList.addAll(oldList)
+        newList.add(position, item)
+        val diff = DiffUtil.calculateDiff(ItemDiffUtilCallback(oldList, newList))
+        diff.dispatchUpdatesTo(this)
     }
 
     inner class ItemViewHolder(

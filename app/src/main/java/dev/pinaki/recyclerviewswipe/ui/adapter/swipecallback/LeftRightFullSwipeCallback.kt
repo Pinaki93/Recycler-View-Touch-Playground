@@ -141,6 +141,7 @@ class LeftRightFullSwipeCallback(
                 leftBackground.draw(c)
             }
         }
-
     }
+
+    override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder) = 0.7f
 }
